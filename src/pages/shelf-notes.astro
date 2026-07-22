@@ -1,0 +1,22 @@
+---
+import { SNSubscribeForm as Subscribe } from "@/components/SubscribeForm"
+import { Wrapper } from "@/components/Wrapper"
+import "@/styles/global.css"
+---
+
+<html lang="en">
+  <head>
+    <!-- big thanks to Jan Antonin Kolar (https://unsplash.com/@jankolar) for the wonderfull banner image!  -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>The Card Catalog</title>
+  </head>
+  <body>
+    <Wrapper client:load>
+      <h2 class="text-center">The Shelf Notes</h2>
+      <Subscribe client:load />
+    </Wrapper>
+  </body>
+</html>

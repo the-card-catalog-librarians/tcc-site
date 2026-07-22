@@ -62,8 +62,8 @@ export function FrontGallery() {
             </div>
         </a>
         {/* Shelf Notes */}
-        {/* TODO: Add real link */}
-        <a className="link-wrapper" href="">
+
+        <a className="link-wrapper" href="/shelf-notes">
             <div className="bg-card rounded-lg  ring-1 ring-foreground/10 h-full ">
                 <div className="bg-primary/50 items-center flex justify-center rounded-t-lg p-4">
                     <Mail size={50} className="text-primary h-15" />
