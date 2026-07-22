@@ -1,0 +1,124 @@
+---
+import SpotifyEmbed from "@/components/SpotifyEmbed.astro"
+import { buttonVariants } from "@/components/ui/button"
+import VideoEmbed from "@/components/VideoEmbed.astro"
+import { Wrapper } from "@/components/Wrapper"
+import "@/styles/global.css"
+---
+
+<html lang="en">
+  <head>
+    <!-- big thanks to Jan Antonin Kolar (https://unsplash.com/@jankolar) for the wonderfull banner image!  -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>Michelle Howard</title>
+  </head>
+  <body>
+    <Wrapper client:load>
+      <h1 class="mainPageTitle">Michelle Howard</h1>
+      <div class="typeset typeset-article">
+        <p class="pb-4">
+          It has been our great pleasure to speak with Michelle Howard several
+          times about many things related to living books and homeschooling. It
+          was our particular privilege to work with Michelle to create a video
+          that librarians, homeschoolers, and lovers of good books could watch
+          and share as we all endeavor to better understand what a living book
+          truly is and why it matters so much. On this page, we hope to pull
+          together those resources and a few others to make it easy for
+          librarians to find it all and make use of it.
+        </p>
+        <img src="/michelle-1.webp" />
+        <h2 class="text-center">Living Books Video</h2>
+        <p>
+          In one of our podcast chats with Michelle, she told us about the
+          essential conversation she has with all of her new patrons. Many of
+          our listeners reached out begging to hear more of that talk. But it
+          was obvious that what we really needed was a video so she could show
+          us the books side by side.
+        </p>
+        <p>
+          <strong
+            >This long video is perfect for librarians, educators, and those
+            interested in a detailed comparison of non-living and living books.</strong
+          >
+        </p>
+        <p>
+          This short video is a trailer for a much more comprehensive video
+          linked below. This video is perfect for sharing on social media, with
+          donors, and with patrons. <a
+            href="https://www.biblioguides.com/libraries/"
+            target="_blank"
+            >Special thanks to our friends at Biblioguides for hosting the video
+            and the Private Lending Library Directory</a
+          >. You can share this video link when sharing:
+        </p>
+        <code class="bg-transparent py-2 text-lg"
+          >https://vimeo.com/936289740?share=copy</code
+        >
+
+        <VideoEmbed src="https://player.vimeo.com/video/936289740" />
+        <h2>Interviews with Michelle Howard</h2>
+        <p>
+          In June of 2023, we had the joy of chatting with Michelle on the
+          Plumfield Moms podcast for the first time. In that interview, we heard
+          about the miraculous ways in which God guided her into this library
+          work. Michelle told us how it all started, encouraged us to understand
+          how much God cares about this work, and left us inspired and eager to
+          nurture our own libraries well:
+        </p>
+        <SpotifyEmbed episodeId="13SUP93pRfHRDguuis2J7q" />
+        <p>
+          And our follow-up conversation about composing a Living Books
+          Education portfolio for college applications
+        </p>
+        <SpotifyEmbed episodeId="6wG4rqPmmyumcAnu9sUrdZ" />
+        <p>
+          Michelle has a 20-Question Living Books Library series on her <a
+            href="https://www.youtube.com/watch?v=NW7S-lgU_Xk"
+            >YouTube channel.</a
+          >
+        </p>
+        <VideoEmbed
+          src="https://www.youtube.com/embed/NW7S-lgU_Xk?si=L76gprbN25AlkWv7"
+        />
+        <p>
+          You can learn more about Michelle and how she can help you at her
+          website.
+        </p>
+        <div class="flex justify-center px-4 pt-6">
+          <a
+            href="https://www.livingbookslady.com"
+            class={buttonVariants({ variant: "default" }) +
+              "no-underline! hover:no-underline! text-lg!  md:w-3/4 w-full"}
+            >Michelle's Website</a
+          >
+        </div>
+        <h2>Private Lending Library Directory</h2>
+        <p>
+          Looking for a lending library near you? Check out the directory hosted
+          by our friends at Biblioguides. If you have a library, register today!
+          It's totally free and you control your information.
+        </p>
+        <div class="flex justify-center p-4">
+          <a
+            href="https://www.biblioguides.com/libraries/"
+            class={buttonVariants({ variant: "default" }) +
+              "no-underline! hover:no-underline! text-lg! md:w-3/4 w-full"}
+            >Library Directory</a
+          >
+        </div>
+        <h2>Are you wondering if this is something you could do?</h2>
+        <div class="flex justify-center p-4">
+          <a
+            href="/ask-the-librarian/26"
+            class={buttonVariants({ variant: "default" }) +
+              "no-underline! hover:no-underline! text-lg!  md:w-3/4 w-full"}
+            >Start Here!</a
+          >
+        </div>
+      </div>
+    </Wrapper>
+  </body>
+</html>

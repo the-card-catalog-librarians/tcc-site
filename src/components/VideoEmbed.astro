@@ -1,0 +1,14 @@
+---
+interface Props {
+  src: string
+}
+const { src } = Astro.props
+---
+
+<div class="mx-auto aspect-video w-full max-w-175">
+  <iframe
+    src={src}
+    class="h-full w-full"
+    allow="autoplay; fullscreen; picture-in-picture"
+    allowfullscreen></iframe>
+</div>

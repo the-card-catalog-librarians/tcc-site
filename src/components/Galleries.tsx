@@ -1,4 +1,4 @@
-import { Bookmark, BookMarked, CircleQuestionMark, Mail, Mic } from "lucide-react";
+import { Bookmark, BookMarked, CircleQuestionMark, Library, Mail, Mic } from "lucide-react";
 import { ArticleTags } from "./Tags";
 import { Card, CardContent, CardHeader } from "./ui/card";
 
@@ -105,6 +105,17 @@ export function FrontGallery() {
                 </div>
                 <div className=" flex items-center justify-center h-22 p-4">
                     <h2 className="mt-0 no-underline text-center">Libraries in the News</h2>
+                </div>
+            </div>
+        </a>
+        {/* Michelle Howard */}
+        <a className="link-wrapper" href="/michelle-howard">
+            <div className="bg-card rounded-lg  ring-1 ring-foreground/10 h-full ">
+                <div className="bg-primary/50 items-center flex justify-center rounded-t-lg p-4">
+                    <Library size={50} className="text-primary h-15" />
+                </div>
+                <div className=" flex items-center justify-center h-22 p-4">
+                    <h2 className="mt-0 no-underline text-center">Michelle Howard</h2>
                 </div>
             </div>
         </a>
