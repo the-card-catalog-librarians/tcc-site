@@ -1,0 +1,68 @@
+---
+import img1 from "@/assets/directory-1.webp"
+import img2 from "@/assets/directory-2.webp"
+import img3 from "@/assets/directory-3.webp"
+import img4 from "@/assets/directory-4.webp"
+import { NewLibraryStory } from "@/components/Fillout"
+import { Wrapper } from "@/components/Wrapper"
+import "@/styles/global.css"
+---
+
+<html lang="en">
+  <head>
+    <!-- big thanks to Jan Antonin Kolar (https://unsplash.com/@jankolar) for the wonderfull banner image!  -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>Private Library Directory Help Page</title>
+  </head>
+  <body>
+    <Wrapper client:load>
+      <h1 class="mainPageTitle">Private Library Directory Help Page</h1>
+      <div class="typeset typeset-article">
+        <p>
+          Our friends at Biblioguides have generously agreed to host the library
+          directory on their beautiful site. To add (or edit) your library
+          listing, follow these instructions. Everything is totally free and you
+          control your information. Update your listing whenever you wish!
+        </p>
+        <h2>Adding A New Listing</h2>
+        <ol>
+          <li>
+            Go to <a
+              href="https://www.biblioguides.com/libraries/"
+              target="_blank">Biblioguides</a
+            >
+          </li>
+          <li>If you aren’t a member, create a free librarian account.</li>
+          <img src={img1.src} />
+          <li>Once you have your free account, click "Add your library"</li>
+          <img src={img2.src} />
+          <li>Complete the form and hit submit</li>
+          <img src={img3.src} />
+        </ol>
+        <h2>Edit your listing</h2>
+        <ol>
+          <li>
+            Login to <a
+              href="https://www.biblioguides.com/libraries/"
+              target="_blank">Biblioguides</a
+            >
+          </li>
+          <li>Click "Update your listing"</li>
+          <li>Update any information</li>
+          <img src={img4.src} />
+          <li>Click Submit</li>
+        </ol>
+        <h2>Librarian Stories</h2>
+        <p>
+          If you would like to have the story of your library published on the <a
+            href="/librarian-stories">Librarian Stories Page</a
+          >, you can use the form below
+        </p>
+        <NewLibraryStory client:load />
+      </div>
+    </Wrapper>
+  </body>
+</html>
