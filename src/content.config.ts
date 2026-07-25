@@ -4,7 +4,10 @@ import { z } from "astro/zod"
 import { defineCollection } from "astro:content"
 
 const askTheLibrarian = defineCollection({
-  loader: glob({ base: "./src/collections/atl/", pattern: "**/*.{md,mdx}" }),
+  loader: glob({
+    base: "./src/collections/atl/",
+    pattern: ["**/*.{md,mdx}", "!**/AGENTS.md"],
+  }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -15,7 +18,7 @@ const askTheLibrarian = defineCollection({
 const librarianStories = defineCollection({
   loader: glob({
     base: "./src/collections/librarian-stories/",
-    pattern: "**/*.{md,mdx}",
+    pattern: ["**/*.{md,mdx}", "!**/AGENTS.md"],
   }),
   schema: z.object({
     title: z.string(),
@@ -29,7 +32,7 @@ const librarianStories = defineCollection({
 const librarianNews = defineCollection({
   loader: glob({
     base: "./src/collections/news/",
-    pattern: "**/*.{md,mdx}",
+    pattern: ["**/*.{md,mdx}", "!**/AGENTS.md"],
   }),
   schema: z.object({
     title: z.string(),
