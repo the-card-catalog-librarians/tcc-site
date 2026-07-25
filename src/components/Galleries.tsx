@@ -10,6 +10,10 @@ interface LSArticle {
     id: string
     data: LSData
 }
+interface NewsArticle {
+    id: string
+    data: NewsData
+}
 interface ATLData {
     title: string,
     description: string,
@@ -18,6 +22,9 @@ interface ATLData {
 interface LSData {
     title: string,
     location: Array<string>
+}
+interface NewsData {
+    title: string
 }
 
 export function ATLGallery({ articles }: { articles: Array<ALTArticle> }) {
@@ -41,6 +48,24 @@ export function LSGallery({ articles }: { articles: Array<LSArticle> }) {
                     <CardHeader><span className='text-[1.1rem]'>{article.data.title}</span></CardHeader>
                     <CardContent><ArticleTags tags={article.data.location} /></CardContent>
                 </Card>
+            </a>
+
+        ))}
+    </div>)
+}
+
+export function NewsGallery({ articles }: { articles: Array<NewsArticle> }) {
+    return (<div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {articles.map((article) => (
+            <a className="link-wrapper" href={`/news/${article.id}`} key={article.id}>
+                <div className="bg-card rounded-lg  ring-1 ring-foreground/10 h-full ">
+                    <div className="bg-primary/50 items-center flex justify-center rounded-t-lg p-4">
+                        <Mic size={50} className="text-primary h-15" />
+                    </div>
+                    <div className=" flex items-center justify-center h-22 p-4">
+                        <h2 className="mt-0 no-underline text-center">{article.data.title}</h2>
+                    </div>
+                </div>
             </a>
 
         ))}
@@ -97,8 +122,8 @@ export function FrontGallery() {
             </div>
         </a>
         {/* Libraries in the News */}
-        {/* TODO: Add real link */}
-        <a className="link-wrapper" href="">
+
+        <a className="link-wrapper" href="/news">
             <div className="bg-card rounded-lg  ring-1 ring-foreground/10 h-full ">
                 <div className="bg-primary/50 items-center flex justify-center rounded-t-lg p-4">
                     <Mic size={50} className="text-primary h-15" />

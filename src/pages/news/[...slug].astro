@@ -1,0 +1,74 @@
+---
+import { Player } from "@/components/MultiPlayer"
+import { Button } from "@/components/ui/button"
+import VideoEmbed from "@/components/VideoEmbed.astro"
+import { Wrapper } from "@/components/Wrapper"
+import { getCollection, render } from "astro:content"
+import { Mic, Newspaper } from "lucide-react"
+import "../../styles/global.css"
+
+export async function getStaticPaths() {
+  const entries = await getCollection("librarianNews")
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }))
+}
+
+const { entry } = Astro.props
+const { Content } = await render(entry)
+---
+
+<html lang="en">
+  <head>
+    <!-- big thanks to Jan Antonin Kolar (https://unsplash.com/@jankolar) for the wonderfull banner image!  -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={entry.data.description} />
+    <title>{entry.data.title}</title>
+  </head>
+  <body>
+    <Wrapper client:load>
+      <h1 class="text-center">{entry.data.title}</h1>
+      {
+        entry.data.podcast ? (
+          <div class="py-4">
+            <a href={entry.data.podcast}>
+              <Button className="w-full p-4 text-lg">
+                <Mic data-icon="inline-start" className="size-5" /> Listen Here
+              </Button>
+            </a>
+          </div>
+        ) : (
+          ""
+        )
+      }
+      {
+        entry.data.article ? (
+          <div class="py-4">
+            <a href={entry.data.article}>
+              <Button className="w-full p-4 text-lg">
+                <Newspaper data-icon="inline-start" className="size-5" /> Read
+                Here
+              </Button>
+            </a>
+          </div>
+        ) : (
+          ""
+        )
+      }
+      {entry.data.video ? <VideoEmbed src={entry.data.video} /> : ""}
+      {
+        entry.data.tracks ? (
+          <Player tracks={entry.data.tracks} client:load />
+        ) : (
+          ""
+        )
+      }
+      <div class="flex flex-col gap-2">
+        <Content />
+      </div>
+    </Wrapper>
+  </body>
+</html>

@@ -26,4 +26,21 @@ const librarianStories = defineCollection({
   }),
 })
 
-export const collections = { askTheLibrarian, librarianStories }
+const librarianNews = defineCollection({
+  loader: glob({
+    base: "./src/collections/news/",
+    pattern: "**/*.{md,mdx}",
+  }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    podcast: z.url().optional(),
+    article: z.url().optional(),
+    video: z.url().optional(),
+    tracks: z
+      .array(z.object({ id: z.string(), url: z.url(), title: z.string() }))
+      .optional(),
+  }),
+})
+
+export const collections = { askTheLibrarian, librarianStories, librarianNews }
