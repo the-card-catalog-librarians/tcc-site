@@ -22,6 +22,7 @@ function SearchBar({ searchTerm, setSearchTerm, onSearch, reset }: {
                 placeholder="Search..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={(e) => { if (e.key === "Enter" || e.key === "Return") onSearch() }}
             />
             <InputGroupAddon>
                 <Button onClick={onSearch} size="icon-xs" variant={"ghost"}>

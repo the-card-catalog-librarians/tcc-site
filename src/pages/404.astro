@@ -1,5 +1,6 @@
 ---
-import { Empty } from "@/components/ui/empty"
+import { Search } from "@/components/search"
+
 import { Wrapper } from "@/components/Wrapper"
 import "@/styles/global.css"
 ---
@@ -15,7 +16,13 @@ import "@/styles/global.css"
   </head>
   <body>
     <Wrapper client:load>
-      <Empty />
+      <h1 class="text-center">404 - Not Found</h1>
+      <p class="pb-4">
+        The page you&apos;re looking for doesn&apos;t exist. Try searching for
+        what you need below.
+      </p>
+
+      <Search client:load />
     </Wrapper>
   </body>
 </html>
