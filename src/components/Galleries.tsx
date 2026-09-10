@@ -10,6 +10,10 @@ interface LSArticle {
     id: string
     data: LSData
 }
+interface LRArticle {
+  id: string
+  data: LRData
+}
 interface NewsArticle {
     id: string
     data: NewsData
@@ -22,6 +26,9 @@ interface ATLData {
 interface LSData {
     title: string,
     location: Array<string>
+}
+interface LRData {
+  title: string
 }
 interface NewsData {
     title: string
@@ -52,6 +59,31 @@ export function LSGallery({ articles }: { articles: Array<LSArticle> }) {
 
         ))}
     </div>)
+}
+
+export function LRGallery({ articles }: { articles: Array<LRArticle> }) {
+  return (
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {articles.map((article) => (
+        <a
+          className="link-wrapper"
+          href={`/reflections/${article.id}`}
+          key={article.id}
+        >
+          <div className="h-full rounded-lg bg-card ring-1 ring-foreground/10">
+            <div className="flex items-center justify-center rounded-t-lg bg-primary/50 p-4">
+              <Bookmark size={50} className="h-15 text-primary" />
+            </div>
+            <div className="flex h-22 items-center justify-center p-4">
+              <h3 className="mt-0 text-center no-underline">
+                {article.data.title}
+              </h3>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  )
 }
 
 export function NewsGallery({ articles }: { articles: Array<NewsArticle> }) {
@@ -110,8 +142,7 @@ export function FrontGallery() {
             </div>
         </a>
         {/* Librarian Reflections */}
-        {/* TODO: Add real link */}
-        <a className="link-wrapper" href="">
+        <a className="link-wrapper" href="/reflections">
             <div className="bg-card rounded-lg  ring-1 ring-foreground/10 h-full ">
                 <div className="bg-primary/50 items-center flex justify-center rounded-t-lg p-4">
                     <Bookmark size={50} className="text-primary h-15" />

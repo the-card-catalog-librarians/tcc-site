@@ -8,5 +8,8 @@ export function Wrapper({ children }: React.PropsWithChildren) {
             <img src="/banner.avif" className="object-cover w-full h-full" alt="An old card catalog" fetchPriority="high" />
         </header>
         <main role="main" className="m-auto width-[90%] md:w-[80%] lg:w-[75%] typeset typeset-article bg-muted p-8">{children}</main>
+      {/*<footer className={"bg-secondary p-4"}>*/}
+      {/*  <a href="/">The Card Catalog</a>*/}
+      {/*</footer>*/}
     </TooltipProvider>)
 }
