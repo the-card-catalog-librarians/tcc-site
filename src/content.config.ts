@@ -26,6 +26,7 @@ const librarianStories = defineCollection({
     author: z.string(),
     fips: z.array(z.string()).optional(),
     location: z.array(z.string()),
+    country: z.string()
   }),
 })
 

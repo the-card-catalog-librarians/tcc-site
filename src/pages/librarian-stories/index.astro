@@ -19,7 +19,7 @@ const articles = await getCollection("librarianStories")
     <Wrapper client:load>
       <h1 class="mainPageTitle">Librarian Stories</h1>
       <div class="typeset typeset-article"></div>
-      <LSGallery articles={articles} />
+      <LSGallery articles={articles} client:load />
     </Wrapper>
   </body>
 </html>

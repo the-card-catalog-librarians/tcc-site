@@ -1,6 +1,7 @@
 import { Bookmark, BookMarked, CircleQuestionMark, Library, Mail, Mic } from "lucide-react";
 import { ArticleTags } from "./Tags";
 import { Card, CardContent, CardHeader } from "./ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs.tsx"
 
 interface ALTArticle {
     id: string
@@ -21,7 +22,8 @@ interface ATLData {
 }
 interface LSData {
     title: string,
-    location: Array<string>
+    location: Array<string>,
+  country: string
 }
 interface NewsData {
     title: string
@@ -41,17 +43,59 @@ export function ATLGallery({ articles }: { articles: Array<ALTArticle> }) {
     </div>)
 }
 export function LSGallery({ articles }: { articles: Array<LSArticle> }) {
-    return (<div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {articles.map((article) => (
-            <a className='block no-underline text-inherit h-full' href={`/librarian-stories/${article.id}`} key={article.id}>
-                <Card className='hover:bg-muted/85 h-full'>
-                    <CardHeader><span className='text-[1.1rem]'>{article.data.title}</span></CardHeader>
-                    <CardContent><ArticleTags tags={article.data.location} /></CardContent>
-                </Card>
-            </a>
+  const grouped = Object.groupBy(articles,(item => item.data.country)) as Record<string, LSArticle[]>
+  // Note: sort by count using a[1].length > b[1].length
 
-        ))}
-    </div>)
+  const triggerNames = Object.entries(grouped).map(([name])=>(name))
+  const triggers = triggerNames.map((trigger)=>(
+    <TabsTrigger value={trigger}>{trigger}</TabsTrigger>
+  ))
+  const sections = Object.entries(grouped).sort((a,b)=>(a[0].localeCompare(b[0]))).map(([country, items]) => (
+    <TabsContent value={country}>
+      <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {items.map((article) => (
+        <a
+          className="block h-full text-inherit no-underline"
+          href={`/librarian-stories/${article.id}`}
+          key={article.id}
+        >
+          <Card className="h-full hover:bg-muted/85">
+            <CardHeader>
+              <span className="text-[1.1rem]">{article.data.title}</span>
+            </CardHeader>
+            <CardContent>
+              <ArticleTags tags={article.data.location} />
+            </CardContent>
+          </Card>
+        </a>
+      ))}
+      </div>
+    </TabsContent>
+  ))
+    // return (
+    //
+    //
+    //   <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-4">
+    //     {articles.map((article) => (
+    //         <a className='block no-underline text-inherit h-full' href={`/librarian-stories/${article.id}`} key={article.id}>
+    //             <Card className='hover:bg-muted/85 h-full'>
+    //                 <CardHeader><span className='text-[1.1rem]'>{article.data.title}</span></CardHeader>
+    //                 <CardContent><ArticleTags tags={article.data.location} /></CardContent>
+    //             </Card>
+    //         </a>
+    //
+    //     ))}
+    // </div>
+    //
+    // )
+  return (
+    <Tabs >
+      <TabsList variant={"line"}>
+        {triggers}
+      </TabsList>
+      {sections}
+    </Tabs>
+  )
 }
 
 export function NewsGallery({ articles }: { articles: Array<NewsArticle> }) {
