@@ -1,0 +1,25 @@
+---
+import podcasts from "@/data/podcast.json"
+import { Wrapper } from "@/components/Wrapper.tsx"
+import { PodcastGallery } from "@/components/Galleries.tsx"
+import "@/styles/global.css"
+
+---
+<html lang="en">
+<head>
+  <!-- big thanks to Jan Antonin Kolar (https://unsplash.com/@jankolar) for the wonderful banner image!  -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:image" content="/banner.avif" />
+
+  <title>The Card Catalog</title>
+</head>
+<body>
+<Wrapper client:load>
+  <h1 class="mainPageTitle">Librarian Podcast</h1>
+  <div class="typeset typeset-article"></div>
+  <PodcastGallery articles={podcasts} client:load />
+</Wrapper>
+</body>
+</html>

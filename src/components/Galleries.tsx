@@ -35,7 +35,10 @@ interface LRData {
 interface NewsData {
     title: string
 }
-
+interface PodcastData {
+    id: string,
+    title: string
+}
 export function ATLGallery({ articles }: { articles: Array<ALTArticle> }) {
     return (<div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-4">
         {articles.map((article) => (
@@ -128,6 +131,30 @@ export function LRGallery({ articles }: { articles: Array<LRArticle> }) {
       ))}
     </div>
   )
+}
+export function PodcastGallery({ articles }: { articles: Array<PodcastData> }) {
+    return (
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {articles.map((podcast) => (
+            <a
+              className="link-wrapper"
+              href={podcast.id}
+              key={podcast.id}
+            >
+                <div className="h-full rounded-lg bg-card ring-1 ring-foreground/10">
+                    <div className="flex items-center justify-center rounded-t-lg bg-primary/50 p-4">
+                        <Mic size={50} className="h-15 text-primary" />
+                    </div>
+                    <div className="flex h-22 items-center justify-center p-4">
+                        <h3 className="mt-0 text-center no-underline">
+                            {podcast.title}
+                        </h3>
+                    </div>
+                </div>
+            </a>
+          ))}
+      </div>
+    )
 }
 
 export function NewsGallery({ articles }: { articles: Array<NewsArticle> }) {
