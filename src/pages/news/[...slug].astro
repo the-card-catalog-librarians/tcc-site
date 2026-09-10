@@ -27,6 +27,8 @@ const { Content } = await render(entry)
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="description" content={entry.data.description} />
     <title>{entry.data.title}</title>
+    <meta property="og:image" content="/banner.avif" />
+
   </head>
   <body>
     <Wrapper client:load>
