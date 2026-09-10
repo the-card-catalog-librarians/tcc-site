@@ -1,6 +1,6 @@
 import { Bookmark, BookMarked, BookOpen, CircleQuestionMark, Headphones, Library, Mail, Mic } from "lucide-react"
 import { ArticleTags } from "./Tags";
-import { Card, CardContent, CardHeader } from "./ui/card";
+import { Card, CardContent, CardFooter, CardHeader } from "./ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs.tsx"
 
 interface ALTArticle {
@@ -45,7 +45,12 @@ export function ATLGallery({ articles }: { articles: Array<ALTArticle> }) {
             <a className='block no-underline text-inherit h-full' href={`/ask-the-librarian/${article.id}`} key={article.id}>
                 <Card className='hover:bg-muted/85 h-full'>
                     <CardHeader><span className='text-[1.1rem]'>{article.data.title}</span></CardHeader>
-                    <CardContent><ArticleTags tags={article.data.tags} /><p className='p-2'><em>{article.data.description}</em></p></CardContent>
+                    <CardFooter className="flex items-center h-full">
+
+                        <ArticleTags tags={article.data.tags} />
+                        {/*<p className='p-2'><em>{article.data.description}</em></p>*/}
+
+                    </CardFooter>
                 </Card>
             </a>
 
