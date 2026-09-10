@@ -35,7 +35,7 @@ export function SNSubscribeForm() {
     const invalidEmail = touched && !email.trim()
 
     return (
-        <div className="p-4 m-auto max-w-125">
+      <div className=" pt-0 lg:pt-6 w-full">
             <Card>
                 <CardHeader>
                     <CardTitle>Subscribe to the Shelf Notes</CardTitle>

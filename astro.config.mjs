@@ -6,6 +6,8 @@ import react from "@astrojs/react"
 import tailwindcss from "@tailwindcss/vite"
 import { defineConfig } from "astro/config"
 
+import sitemap from "@astrojs/sitemap"
+
 // import remarkGithubAlerts from "remark-github-alerts"
 
 // https://astro.build/config
@@ -13,7 +15,8 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  integrations: [mdx(), react()],
+  integrations: [mdx(), react(), sitemap()],
+  site: "https://thecardcataloglibrarians.com",
   // markdown: {
   //   processor: unified({ remarkPlugins: [remarkGithubAlerts] }),
   // },

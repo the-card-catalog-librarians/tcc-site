@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thecardcataloglibrarians.com/sitemap-index.xml

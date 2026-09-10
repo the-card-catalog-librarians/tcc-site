@@ -10,13 +10,22 @@ import "@/styles/global.css"
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
     <title>The Card Catalog</title>
   </head>
   <body>
     <Wrapper client:load>
-      <h2 class="text-center">The Shelf Notes</h2>
+      <h2 class="text-center text-2xl">The Shelf Notes</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <p>
+          Welcome to Shelf Notes, the monthly newsletter of The Card Catalog Librarians, created to encourage and equip
+          private living-books lending librarians, patrons, and supporters. Each issue offers practical guidance,
+          inspiring library stories, book recommendations, helpful resources, and news from the growing private
+          lending-library movement. Sign up to receive new issues in your inbox, or browse our archive to explore past
+          editions of Shelf Notes.</p>
       <Subscribe client:load />
+      </div>
     </Wrapper>
   </body>
 </html>
