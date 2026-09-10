@@ -14,10 +14,10 @@ async function Main() {
   })
   try {
     for await (const page of iteratePaginatedAPI(notion.dataSources.query, {
-      data_source_id: "1c2d7c6a-c15d-80b1-aaed-000b15b820f8",
+      data_source_id: "1c2d7c6a-c15d-8089-8d48-000b4f9fd153",
     })) {
       const md = await notion.pages.retrieveMarkdown({ page_id: page.id })
-      const filepath = "./ntn_ls/" + page.id + ".md"
+      const filepath = "./ntn_rf/" + page.id + ".md"
 
       try {
         await fs.writeFile(filepath, md.markdown, "utf8")

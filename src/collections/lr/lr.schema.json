@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Librarian Reflection",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Article title"
+    },
+    "author": {
+      "type": "string",
+      "description": "Author name"
+    },
+    "librarianStory": {
+      "type": "number"
+    }
+  },
+  "required": ["title", "author"],
+  "additionalProperties": false
+}

@@ -15,6 +15,17 @@ const askTheLibrarian = defineCollection({
     author: z.string(),
   }),
 })
+const librarianReflections = defineCollection({
+  loader: glob({
+    base: "./src/collections/lr/",
+    pattern: ["**/*.{md,mdx}", "!**/AGENTS.md"],
+  }),
+  schema: z.object({
+    title: z.string(),
+    author: z.string(),
+    librarianStory: z.number().optional()
+  }),
+})
 const librarianStories = defineCollection({
   loader: glob({
     base: "./src/collections/librarian-stories/",
@@ -47,4 +58,4 @@ const librarianNews = defineCollection({
   }),
 })
 
-export const collections = { askTheLibrarian, librarianStories, librarianNews }
+export const collections = {librarianReflections, askTheLibrarian, librarianStories, librarianNews }

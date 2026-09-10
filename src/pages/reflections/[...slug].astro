@@ -1,0 +1,38 @@
+---
+
+import { Wrapper } from "@/components/Wrapper"
+import { getCollection, render } from "astro:content"
+import "../../styles/global.css"
+
+export async function getStaticPaths() {
+  const entries = await getCollection("librarianReflections")
+  return entries.map((entry) => ({
+  params: { slug: entry.id },
+  props: { entry },
+  }))
+  }
+
+const { entry } = Astro.props
+const { Content } = await render(entry)
+---
+
+<html lang="en">
+<head>
+  <!-- big thanks to Jan Antonin Kolar (https://unsplash.com/@jankolar) for the wonderfull banner image!  -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>{entry.data.title}</title>
+</head>
+<body>
+<Wrapper client:load>
+  <h1 class="articleTitle">{entry.data.title}</h1>
+  <div class="flex flex-col gap-2">
+    {entry.data.librarianStory? <a href={`/librarian-stories/${entry.data.librarianStory}`}>By {entry.data.author}</a> :
+    <cite>By {entry.data.author}</cite>
+    }
+    <Content />
+  </div>
+</Wrapper>
+</body>
+</html>
