@@ -35,6 +35,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/topojson-specification": "^1.0.5",
+    "add": "^2.0.9",
     "astro": "^7.1.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
