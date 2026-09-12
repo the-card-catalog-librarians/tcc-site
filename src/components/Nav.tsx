@@ -7,6 +7,7 @@ const links: HamburgerMenuProps["links"] = [
   { label: "News", href: "/news" },
   { label: "Michelle Howard", href: "/michelle-howard" },
   { label: "Librarian Reflections", href: "/reflections" },
+  { label: "Librarian Podcast", href: "/podcast" },
 ]
 
 export const Nav = () => (
