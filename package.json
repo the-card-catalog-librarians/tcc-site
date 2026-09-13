@@ -13,6 +13,7 @@
     "astro": "astro",
     "sync": "astro sync",
     "lint": "eslint .",
+    "api": "pnpm dlx wrangler pages dev ./dist",
     "format": "prettier --write \"**/*.{ts,tsx,astro}\"",
     "typecheck": "astro check"
   },
@@ -59,6 +60,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9",
+    "@cloudflare/workers-types": "^5.20260911.1",
     "@eslint/js": "^10",
     "@notionhq/client": "^5.23.2",
     "@types/d3-geo": "^3.1.1",
