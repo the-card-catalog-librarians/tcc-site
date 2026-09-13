@@ -9,7 +9,8 @@ const StorySchema = z.object({
   email: z.email(),
   country: z.string(),
   state: z.string().optional(),
-  story: z.string()
+  story: z.string(),
+  honey: z.string().optional()
 })
 interface Env {
   N_API_KEY: string
@@ -29,6 +30,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     let data: z.infer<typeof StorySchema>
     try{
      data = StorySchema.parse(await request.json())
+      if(data.honey&& data.honey.length>0){
+        console.error(`AI Request: ${data}`)
+        // fake a 200
+        return new Response(JSON.stringify({ ok: true }), {
+          headers: { "Content-Type": "application/json" },
+        })
+      }
   }catch (e) {
     console.error(e)
     return new Response(
