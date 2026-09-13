@@ -9,7 +9,7 @@ const StorySchema = z.object({
   email: z.email(),
   country: z.string(),
   state: z.string().optional(),
-  story: z.string().min(250)
+  story: z.string()
 })
 interface Env {
   N_API_KEY: string
