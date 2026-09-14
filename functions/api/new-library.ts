@@ -15,6 +15,8 @@ const StorySchema = z.object({
 })
 interface Env {
   N_API_KEY: string
+  VAL_TOWN_KEY: string
+  WEBHOOK_URL: string
 }
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
@@ -107,6 +109,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         },
       },
       markdown: data.story,
+    })
+    await fetch(env.WEBHOOK_URL, {
+      method: "POST",
+      headers: {
+        "X-Webhook-Secret": env.VAL_TOWN_KEY,
+      },
+      body: JSON.stringify(data),
     })
   } catch (e) {
     console.error(e)
