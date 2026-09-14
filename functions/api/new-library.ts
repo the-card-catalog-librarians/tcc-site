@@ -10,7 +10,8 @@ const StorySchema = z.object({
   country: z.string(),
   state: z.string().optional(),
   story: z.string(),
-  honey: z.string().optional()
+  honey: z.string().optional(),
+  bg: z.boolean(),
 })
 interface Env {
   N_API_KEY: string
@@ -100,6 +101,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
               },
             },
           ],
+        },
+        BG: {
+          checkbox: data.bg,
         },
       },
       markdown: data.story,

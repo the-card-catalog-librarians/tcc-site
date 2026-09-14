@@ -1,4 +1,4 @@
-import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field.tsx"
+import { Field, FieldContent, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field.tsx"
 import React, { useState } from "react"
 import { Input } from "@/components/ui/input.tsx"
 import { Textarea } from "@/components/ui/textarea.tsx"
@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button.tsx"
 import { Toaster } from "@/components/ui/sonner.tsx"
 import { toast } from "sonner"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card.tsx"
+import { Checkbox } from "@/components/ui/checkbox.tsx"
 export function NewLibraryForm(){
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
@@ -15,6 +16,7 @@ export function NewLibraryForm(){
   const [story, setStory] = useState("")
   const [library, setLibrary] = useState("")
   const [honey, setHoney] = useState("")
+  const [bg, setBg] = useState(false)
   async function handleSubmit(event: React.SubmitEvent){
     event.preventDefault()
     if(honey.length>0){
@@ -25,7 +27,7 @@ export function NewLibraryForm(){
       const resp = await fetch("/api/new-library", {
         method: "POST",
         body: JSON.stringify({
-          firstName,lastName,email,country,"state": state, library, story, "honey": honey
+          firstName, lastName, email, country, "state": state, library, story, "honey": honey, bg,
         })
       })
       if(!resp.ok){
@@ -121,6 +123,18 @@ export function NewLibraryForm(){
               value={story}
               onChange={(e) => setStory(e.target.value)}
             ></Textarea>
+          </Field>
+          <Field orientation={"horizontal"}>
+            <Checkbox checked={bg}
+                      onCheckedChange={(checked) => setBg(checked)}
+            />
+            <FieldContent>
+              <FieldLabel>Is your library listed in our library directory at Biblioguides?</FieldLabel>
+              <FieldDescription>If not, please consider adding your library to <a target={"_blank"}
+                                                                                  href={"https://www.biblioguides.com/libraries/"}>this
+                online list of active private living books lending libraries across the world</a> so that readers in
+                your area can find your library.</FieldDescription>
+            </FieldContent>
           </Field>
           <Field style={{ display: "none" }}>
             <FieldLabel>Please tell us more!</FieldLabel>
